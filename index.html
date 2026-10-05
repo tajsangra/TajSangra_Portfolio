@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Engineering case study: an 84-key RP2040 mechanical keyboard designed in KiCad and SolidWorks, assembled and debugged by hand, with QMK firmware and per-key RGB." />
+  <meta name="theme-color" content="#090d12" />
+  <title>Custom Mechanical Keyboard — Engineering Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+  <header class="nav-wrap">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark">⌨</span>
+        <span>Engineering Portfolio</span>
+      </a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#hardware">Hardware</a>
+        <a href="#firmware">Firmware</a>
+        <a href="#build">Build</a>
+        <a href="#demo">Demo</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="eyebrow reveal">PERSONAL ENGINEERING PROJECT · 2026</div>
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <h1>84-Key Custom<br><span>Mechanical Keyboard</span></h1>
+          <p class="lede">A ground-up keyboard build spanning electrical design, PCB layout, embedded firmware, mechanical CAD, assembly, and hardware debugging.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#demo">Watch it work</a>
+            <a class="button ghost" href="#hardware">Explore the design</a>
+          </div>
+          <div class="tags" aria-label="Project technologies">
+            <span>KiCad</span><span>QMK</span><span>RP2040</span><span>SolidWorks</span><span>PCB Design</span><span>Embedded C</span>
+          </div>
+        </div>
+        <figure class="hero-media reveal">
+          <img src="assets/keyboard-hero-v2.jpg" alt="Completed white custom mechanical keyboard photographed from above" fetchpriority="high" />
+          <figcaption>Final assembled prototype</figcaption>
+        </figure>
+      </div>
+
+      <div class="stats reveal" aria-label="Project specifications">
+        <div><strong>84</strong><span>hotswap keys</span></div>
+        <div><strong>9 × 10</strong><span>scan matrix</span></div>
+        <div><strong>92</strong><span>RGB LEDs on PCB</span></div>
+        <div><strong>RP2040</strong><span>controller</span></div>
+      </div>
+    </section>
+
+    <section id="overview" class="section shell">
+      <div class="section-heading reveal">
+        <div class="kicker">01 / OVERVIEW</div>
+        <h2>One project, four engineering disciplines.</h2>
+        <p>The goal was not to assemble a keyboard kit. It was to design the system around a custom layout, build the electronics and enclosure, write the firmware, and bring the physical board to a working state.</p>
+      </div>
+
+      <div class="discipline-grid">
+        <article class="discipline reveal"><span>01</span><h3>Electrical</h3><p>Switch matrix, per-key RGB, level shifting, controller integration, decoupling, and expansion hardware.</p></article>
+        <article class="discipline reveal"><span>02</span><h3>PCB</h3><p>Custom footprints, component placement, routing, hotswap sockets, mounting geometry, and fabrication-ready layout.</p></article>
+        <article class="discipline reveal"><span>03</span><h3>Firmware</h3><p>QMK configuration for matrix scanning, layers, media controls, navigation, USB HID, and addressable lighting.</p></article>
+        <article class="discipline reveal"><span>04</span><h3>Mechanical</h3><p>SolidWorks enclosure design, switch plate integration, mounting points, and iterative physical fit.</p></article>
+      </div>
+
+      <figure class="wide-figure reveal">
+        <img src="assets/system-architecture.svg" alt="System architecture diagram for the custom keyboard" loading="lazy" />
+        <figcaption>System-level architecture. The OLED and rotary encoder were provisioned in hardware; the working firmware build focuses on the core keyboard and RGB path.</figcaption>
+      </figure>
+    </section>
+
+    <section id="hardware" class="section section-alt">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="kicker">02 / HARDWARE & PCB</div>
+          <h2>Designed around the real layout, not a generic dev board.</h2>
+          <p>The uploaded KiCad PCB contains 84 mechanical switch footprints, 92 reverse-mount SK6812MINI-E LEDs, a Raspberry Pi Pico footprint, OLED and rotary-encoder provisions, a 74AHCT125 level shifter, and six M2 mounting holes.</p>
+        </div>
+
+        <div class="hardware-grid">
+          <figure class="technical-card span-2 reveal">
+            <img src="assets/pcb-layout.svg" alt="Component map generated from the uploaded KiCad board coordinates" loading="lazy" />
+            <figcaption><strong>PCB component map</strong><br>Generated directly from <code>Keyboard(10).kicad_pcb</code>. Red points show the RGB devices and white outlines show the 84 switch locations.</figcaption>
+          </figure>
+
+          <article class="technical-card reveal">
+            <div class="card-label">Controller</div>
+            <h3>Raspberry Pi Pico / RP2040</h3>
+            <p>The controller provides enough GPIO for the matrix while also handling USB HID and the addressable RGB data stream.</p>
+            <dl class="spec-list"><div><dt>USB</dt><dd>HID keyboard</dd></div><div><dt>Firmware</dt><dd>QMK</dd></div><div><dt>RGB data</dt><dd>GP18</dd></div></dl>
+          </article>
+
+          <article class="technical-card reveal">
+            <div class="card-label">Lighting</div>
+            <h3>Per-key addressable RGB</h3>
+            <p>The PCB carries 92 SK6812MINI-E devices: 84 aligned with the switches plus additional auxiliary lighting positions.</p>
+            <dl class="spec-list"><div><dt>LED type</dt><dd>SK6812MINI-E</dd></div><div><dt>Logic</dt><dd>74AHCT125</dd></div><div><dt>Decoupling</dt><dd>0.1 µF network</dd></div></dl>
+          </article>
+        </div>
+
+        <div class="photo-pair">
+          <figure class="photo-card reveal">
+            <img src="assets/switch-plate-v2.jpg" alt="Front of the keyboard PCB and plate with switches installed" loading="lazy" />
+            <figcaption>Switch plate and populated mechanical layout before keycaps.</figcaption>
+          </figure>
+          <figure class="photo-card reveal">
+            <img src="assets/pcb-back-v2.jpg" alt="Back of the custom keyboard PCB showing the Pico, hotswap sockets, components and rework wires" loading="lazy" />
+            <figcaption>Back side of the assembled PCB during bring-up, including the Pico and hand-soldered rework.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="firmware" class="section shell">
+      <div class="section-heading reveal">
+        <div class="kicker">03 / FIRMWARE</div>
+        <h2>The PCB becomes a keyboard in software.</h2>
+        <p>QMK scans the 9 × 10 switch matrix, maps physical positions to keycodes and layers, exposes the device over USB, and drives the RGB chain.</p>
+      </div>
+
+      <div class="code-layout">
+        <div class="code-window reveal" aria-label="Representative QMK configuration">
+          <div class="code-title"><span></span><span></span><span></span><b>config.h · matrix configuration</b></div>
+<pre><code><span class="cmt">// Physical key matrix</span>
+<span class="kw">#define</span> MATRIX_ROWS <span class="num">9</span>
+<span class="kw">#define</span> MATRIX_COLS <span class="num">10</span>
+
+<span class="kw">#define</span> MATRIX_ROW_PINS { 
+  GP19, GP10, GP17, GP16, GP15,
+  GP13, GP14, GP12, GP11
+}
+
+<span class="kw">#define</span> MATRIX_COL_PINS {
+  GP0, GP1, GP2, GP3, GP4,
+  GP8, GP9, GP5, GP6, GP7
+}
+
+<span class="kw">#define</span> DIODE_DIRECTION ROW2COL
+<span class="kw">#define</span> RGB_DI_PIN GP18</code></pre>
+        </div>
+
+        <div class="firmware-notes">
+          <article class="mini-card reveal"><span>01</span><div><h3>Matrix scanning</h3><p>Rows and columns reduce the GPIO requirement from one pin per key to a structured scan across the board.</p></div></article>
+          <article class="mini-card reveal"><span>02</span><div><h3>Three-layer keymap</h3><p>The base layout is extended with <code>FN</code> and <code>AFN</code> momentary layers for secondary functions without sacrificing the physical layout.</p></div></article>
+          <article class="mini-card reveal"><span>03</span><div><h3>Dedicated controls</h3><p>The layout includes arrows, function keys, media controls, Insert/Delete, and a full typing cluster.</p></div></article>
+          <article class="mini-card reveal"><span>04</span><div><h3>RGB control</h3><p>Addressable LEDs share a single serialized data path, letting firmware control lighting without consuming a GPIO pin per LED.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="build" class="section section-alt">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="kicker">04 / BUILD & ITERATION</div>
+          <h2>Designed, fabricated, assembled, debugged.</h2>
+          <p>The finished prototype is the result of a complete hardware loop: CAD → PCB → assembly → firmware → electrical debugging → mechanical integration.</p>
+        </div>
+
+        <div class="timeline reveal">
+          <div><b>01</b><span>Define custom layout and controls</span></div>
+          <div><b>02</b><span>Capture schematic + place footprints</span></div>
+          <div><b>03</b><span>Route PCB and prepare fabrication</span></div>
+          <div><b>04</b><span>Model enclosure in SolidWorks</span></div>
+          <div><b>05</b><span>Assemble switches, LEDs and controller</span></div>
+          <div><b>06</b><span>Bring up QMK and test matrix</span></div>
+          <div><b>07</b><span>Trace faults and add board rework</span></div>
+          <div><b>08</b><span>Integrate case, keycaps and final firmware</span></div>
+        </div>
+
+        <div class="story-grid">
+          <figure class="photo-card tall reveal">
+            <img src="assets/side-profile.jpg" alt="Side profile of the assembled keyboard in its white enclosure" loading="lazy" />
+            <figcaption><strong>Mechanical integration</strong><br>The case and assembly were modeled in SolidWorks, then fitted around the custom board and plate.</figcaption>
+          </figure>
+
+          <article class="story reveal">
+            <div class="card-label">Debugging</div>
+            <h3>The rework is part of the engineering story.</h3>
+            <p>The prototype board visibly carries jumper wires added during hardware bring-up. Rather than hiding them, they show the iteration between design assumptions and physical behavior.</p>
+            <p>Debugging a board like this means isolating the problem layer-by-layer: firmware mapping, switch continuity, diode direction, matrix row/column connectivity, power delivery, and RGB signal flow.</p>
+            <div class="lesson-box"><strong>Next-revision priorities</strong><span>More accessible test points, cleaner rework paths, tighter pre-fabrication connectivity checks, and improved serviceability around expansion hardware.</span></div>
+          </article>
+        </div>
+
+        <div class="lighting-gallery">
+          <figure class="photo-card reveal"><img src="assets/lighting-detail-v2.jpg" alt="Close-up of keyboard keys illuminated from below by red RGB lighting" loading="lazy" /><figcaption>Lighting visible through the switch/keycap assembly.</figcaption></figure>
+          <figure class="photo-card wide reveal"><img src="assets/rgb-closeup-v2.jpg" alt="Close-up row of mechanical switches with red LEDs illuminated" loading="lazy" /><figcaption>Reverse-mount RGB LEDs operating beneath the switches.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo" class="section shell">
+      <div class="section-heading reveal">
+        <div class="kicker">05 / FINAL PROTOTYPE</div>
+        <h2>Working hardware.</h2>
+      </div>
+
+      <div class="video-frame reveal">
+        <video controls preload="metadata" playsinline>
+          <source src="assets/keyboard-demo-v2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="takeaways reveal">
+        <div><span>What this project demonstrates</span><h2>End-to-end ownership of a physical computing system.</h2></div>
+        <ul>
+          <li>Translate a custom product idea into electrical and mechanical requirements.</li>
+          <li>Design a manufacturable PCB with switches, lighting, controller and supporting circuitry.</li>
+          <li>Write firmware that maps physical hardware into a usable USB device.</li>
+          <li>Assemble and debug a real prototype instead of stopping at simulation or CAD.</li>
+          <li>Use the first build to identify concrete improvements for the next hardware revision.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div><strong>Custom Mechanical Keyboard</strong><span>KiCad · QMK · RP2040 · SolidWorks</span></div>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
