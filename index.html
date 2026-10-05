@@ -105,6 +105,17 @@
           </article>
         </div>
 
+        <div class="kicad-gallery">
+          <figure class="photo-card reveal">
+            <img src="assets/kicad-schematic-v1.png" alt="KiCad schematic showing the Raspberry Pi Pico, level shifting circuitry, and keyboard matrix connections" loading="lazy" />
+            <figcaption><strong>KiCad schematic</strong><br>The completed electrical design combines the RP2040 controller, matrix rows and columns, RGB signal conditioning, and supporting circuitry.</figcaption>
+          </figure>
+          <figure class="photo-card reveal">
+            <img src="assets/kicad-pcb-v1.png" alt="KiCad PCB editor showing the routed custom keyboard PCB with copper pours and component placement" loading="lazy" />
+            <figcaption><strong>KiCad PCB layout</strong><br>Final routed board view with switch footprints, per-key RGB, controller hardware, copper pours, and the custom right-side control area.</figcaption>
+          </figure>
+        </div>
+
         <div class="photo-pair">
           <figure class="photo-card reveal">
             <img src="assets/switch-plate-v3.jpg" alt="Front of the keyboard PCB and plate with switches installed" loading="lazy" />
@@ -175,12 +186,13 @@
         </div>
 
         <div class="story-grid">
-          <article class="story reveal">
+          <article class="story reveal debugging-story">
             <div class="card-label">Debugging</div>
-            <h3>The rework is part of the engineering story.</h3>
-            <p>The prototype board visibly carries jumper wires added during hardware bring-up. Rather than hiding them, they show the iteration between design assumptions and physical behavior.</p>
-            <p>Debugging a board like this means isolating the problem layer-by-layer: firmware mapping, switch continuity, diode direction, matrix row/column connectivity, power delivery, and RGB signal flow.</p>
-            <div class="lesson-box"><strong>Next-revision priorities</strong><span>More accessible test points, cleaner rework paths, tighter pre-fabrication connectivity checks, and improved serviceability around expansion hardware.</span></div>
+            <h3>The prototype only worked after several rounds of electrical and mechanical debugging.</h3>
+            <p>The first problems appeared before fabrication. KiCad reported schematic issues because many global labels were visually placed on wires but were not actually snapped to the wire endpoints. Those labels had to be moved and the schematic rechecked before the design was considered clean.</p>
+            <p>The largest design failure came after the first PCB was ordered: every Kailh hot-swap socket had been flipped to the wrong side. The footprint already accounted for backside mounting, so flipping the footprint again put the sockets on the wrong side and made the first PCB unusable. I corrected all socket orientations, rerouted the board, and ordered a second revision.</p>
+            <p>Assembly created another failure mode. One row of RGB LEDs was soldered backwards, and while reorienting them I tore four copper pads from the PCB. The damaged LED connections were recovered with hand-soldered jumper wires, which are visible on the back of the finished board.</p>
+            <p>Mechanical debugging happened in parallel. The OLED orientation and plate clearance required extra work: the display PCB needed a larger opening through the plate, and the mounting geometry required spacers, washers, and smaller M1.2 hardware. The top-case CAD also repeatedly reverted to an older smaller state until a SolidWorks update resolved the issue.</p>
           </article>
         </div>
 
@@ -204,15 +216,38 @@
         </video>
       </div>
 
-      <div class="takeaways reveal">
-        <div><span>What this project demonstrates</span><h2>End-to-end ownership of a physical computing system.</h2></div>
-        <ul>
-          <li>Translate a custom product idea into electrical and mechanical requirements.</li>
-          <li>Design a manufacturable PCB with switches, lighting, controller and supporting circuitry.</li>
-          <li>Write firmware that maps physical hardware into a usable USB device.</li>
-          <li>Assemble and debug a real prototype instead of stopping at simulation or CAD.</li>
-          <li>Use the first build to identify concrete improvements for the next hardware revision.</li>
-        </ul>
+      <div class="faults-section reveal">
+        <div class="faults-heading">
+          <span>FAULTS & FIXES</span>
+          <h2>What went wrong—and how I recovered the build.</h2>
+          <p>The project required multiple design revisions and physical repairs. These were the failures that had the biggest effect on the final keyboard.</p>
+        </div>
+        <div class="fault-grid">
+          <article class="fault-card">
+            <b>01</b>
+            <h3>Hot-swap sockets on the wrong side</h3>
+            <p><strong>Fault:</strong> Every Kailh socket on the first PCB was flipped even though the footprint already represented backside mounting.</p>
+            <p><strong>Fix:</strong> Corrected all socket orientations, rerouted the affected PCB connections, and ordered a new board revision.</p>
+          </article>
+          <article class="fault-card">
+            <b>02</b>
+            <h3>Reversed RGB LEDs and torn pads</h3>
+            <p><strong>Fault:</strong> One LED row was soldered backwards. Reworking the LEDs tore four copper pads from the board.</p>
+            <p><strong>Fix:</strong> Reoriented the LEDs and restored the damaged connections using jumper wires soldered to surviving copper and component connections.</p>
+          </article>
+          <article class="fault-card">
+            <b>03</b>
+            <h3>OLED orientation and clearance</h3>
+            <p><strong>Fault:</strong> The OLED was upside down in the KiCad design and its PCB needed more clearance through the already-ordered plate.</p>
+            <p><strong>Fix:</strong> Used the display in its workable orientation, enlarged the plate opening with a Dremel, and added spacers, washers, and M1.2 screws for mounting.</p>
+          </article>
+          <article class="fault-card">
+            <b>04</b>
+            <h3>Top-case CAD repeatedly reverted</h3>
+            <p><strong>Fault:</strong> The top-case model repeatedly opened in an older, smaller state, blocking enclosure progress.</p>
+            <p><strong>Fix:</strong> After extensive troubleshooting, updating the CAD software stopped the reversion and allowed the enclosure to be completed.</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
