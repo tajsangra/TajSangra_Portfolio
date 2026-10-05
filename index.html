@@ -118,11 +118,11 @@
 
         <div class="photo-pair">
           <figure class="photo-card reveal">
-            <img src="assets/switch-plate-v3.jpg" alt="Front of the keyboard PCB and plate with switches installed" loading="lazy" />
+            <img src="assets/switch-plate-v4.jpg" alt="Front of the keyboard PCB and plate with switches installed" loading="lazy" />
             <figcaption>Switch plate and populated mechanical layout before keycaps.</figcaption>
           </figure>
           <figure class="photo-card reveal">
-            <img src="assets/pcb-back-v3.jpg" alt="Back of the custom keyboard PCB showing the Pico, hotswap sockets, components and rework wires" loading="lazy" />
+            <img src="assets/pcb-back-v4.jpg" alt="Back of the custom keyboard PCB showing the Pico, hotswap sockets, components and rework wires" loading="lazy" />
             <figcaption>Back side of the assembled PCB during bring-up, including the Pico and hand-soldered rework.</figcaption>
           </figure>
         </div>
@@ -218,34 +218,34 @@
 
       <div class="faults-section reveal">
         <div class="faults-heading">
-          <span>FAULTS & FIXES</span>
-          <h2>What went wrong—and how I recovered the build.</h2>
-          <p>The project required multiple design revisions and physical repairs. These were the failures that had the biggest effect on the final keyboard.</p>
+          <span>NEXT REVISION</span>
+          <h2>What I would improve in a future version.</h2>
+          <p>The first prototype exposed several places where the design and build process could be made more robust. A second revision would focus on preventing avoidable rework before fabrication and making hardware bring-up easier.</p>
         </div>
         <div class="fault-grid">
           <article class="fault-card">
             <b>01</b>
-            <h3>Hot-swap sockets on the wrong side</h3>
-            <p><strong>Fault:</strong> Every Kailh socket on the first PCB was flipped even though the footprint already represented backside mounting.</p>
-            <p><strong>Fix:</strong> Corrected all socket orientations, rerouted the affected PCB connections, and ordered a new board revision.</p>
+            <h3>Validate every footprint before ordering</h3>
+            <p>The first PCB became unusable because the Kailh hot-swap sockets were flipped even though the footprint already accounted for backside mounting.</p>
+            <p><strong>Next time:</strong> verify front/back orientation against the physical part and KiCad 3D view before routing is finalized and before fabrication files are sent out.</p>
           </article>
           <article class="fault-card">
             <b>02</b>
-            <h3>Reversed RGB LEDs and torn pads</h3>
-            <p><strong>Fault:</strong> One LED row was soldered backwards. Reworking the LEDs tore four copper pads from the board.</p>
-            <p><strong>Fix:</strong> Reoriented the LEDs and restored the damaged connections using jumper wires soldered to surviving copper and component connections.</p>
+            <h3>Make assembly faults easier to recover from</h3>
+            <p>A reversed LED row led to repeated desoldering, and four copper pads were torn during rework.</p>
+            <p><strong>Next time:</strong> mark LED orientation more clearly, test smaller sections during assembly, and add more accessible pads or test points so damaged connections are easier to diagnose and repair.</p>
           </article>
           <article class="fault-card">
             <b>03</b>
-            <h3>OLED orientation and clearance</h3>
-            <p><strong>Fault:</strong> The OLED was upside down in the KiCad design and its PCB needed more clearance through the already-ordered plate.</p>
-            <p><strong>Fix:</strong> Used the display in its workable orientation, enlarged the plate opening with a Dremel, and added spacers, washers, and M1.2 screws for mounting.</p>
+            <h3>Lock mechanical interfaces before fabrication</h3>
+            <p>The OLED orientation and plate clearance were not fully resolved before the plate was ordered, which later required enlarging the opening and adding spacers, washers, and smaller hardware.</p>
+            <p><strong>Next time:</strong> model the exact OLED PCB, fasteners, spacers, and plate opening together in CAD and run a final interference/clearance check before ordering parts.</p>
           </article>
           <article class="fault-card">
             <b>04</b>
-            <h3>Top-case CAD repeatedly reverted</h3>
-            <p><strong>Fault:</strong> The top-case model repeatedly opened in an older, smaller state, blocking enclosure progress.</p>
-            <p><strong>Fix:</strong> After extensive troubleshooting, updating the CAD software stopped the reversion and allowed the enclosure to be completed.</p>
+            <h3>Use a stricter CAD and revision workflow</h3>
+            <p>The top-case model repeatedly reverted to an older state, which cost significant time during enclosure design.</p>
+            <p><strong>Next time:</strong> keep explicit dated versions of major CAD milestones, update software before critical design work, and preserve stable exports of dimensions used by the PCB, plate, and enclosure.</p>
           </article>
         </div>
       </div>
