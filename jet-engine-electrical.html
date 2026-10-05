@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Jet engine electrical and control system project by Taj Sangra." />
+  <meta name="theme-color" content="#090d12" />
+  <title>Jet Engine Electrical &amp; Control System — Taj Sangra</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+  <header class="nav-wrap">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Back to home"><span class="brand-mark">J</span><span>Taj Sangra Portfolio</span></a>
+      <div class="nav-links"><a href="index.html">Home</a><a href="#overview">Overview</a><a href="#system">System</a><a href="#components">Components</a><a href="#integration">Integration</a></div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell jet-hero">
+      <div class="eyebrow reveal">PERSONAL ENGINEERING PROJECT · 2026</div>
+      <div class="hero-grid jet-hero-grid">
+        <div class="hero-copy reveal">
+          <h1>Jet Engine<br><span>Electrical &amp; Control System</span></h1>
+          <p class="lede">A custom electrical system integrating ignition, power switching, motor control, sensing, display hardware, and safety controls for a small jet-engine project.</p>
+          <div class="hero-actions"><a class="button primary" href="#components">View components</a><a class="button ghost" href="#system">System overview</a></div>
+          <div class="tags" aria-label="Project technologies"><span>Arduino</span><span>Power Electronics</span><span>RPM Sensing</span><span>Ignition</span><span>Relays</span><span>CAD</span></div>
+        </div>
+        <figure class="hero-media jet-hero-media reveal"><img src="assets/jet-system-overview.jpg" alt="Jet engine electrical system laid out beside the engine and control enclosure" fetchpriority="high" /><figcaption>Electrical system during bench integration</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="overview" class="section shell">
+      <div class="section-heading reveal"><div class="kicker">01 / OVERVIEW</div><h2>Project Overview</h2><p>The electrical subsystem brings the engine's supporting hardware under one controllable system. The enclosure houses the controller, switching hardware, motor driver, display, and supporting electronics, while external ignition and sensing hardware connects to the engine test setup.</p></div>
+      <div class="jet-overview-grid">
+        <figure class="photo-card reveal jet-contained-photo"><img src="assets/jet-control-box.jpg" alt="Inside the jet engine electrical control enclosure" loading="lazy" /><figcaption><strong>Control enclosure</strong><br>Controller, relay board, motor driver, display hardware, and wiring integrated into the printed enclosure.</figcaption></figure>
+        <article class="story reveal jet-summary-card"><div class="card-label">System goals</div><h3>Centralized electrical control for engine testing.</h3><p>The system combines low-voltage logic with higher-current loads and ignition hardware. Keeping the electronics in a dedicated enclosure makes the bench setup easier to operate, troubleshoot, and expand.</p><p>This page is structured so each subsystem can be documented independently as testing continues.</p></article>
+      </div>
+    </section>
+
+    <section id="system" class="section section-alt">
+      <div class="shell">
+        <div class="section-heading reveal"><div class="kicker">02 / SYSTEM</div><h2>Electrical System</h2><p>The controls are divided into logic, switching, motor drive, ignition, sensing, and user-interface functions.</p></div>
+        <div class="jet-system-strip">
+          <article class="discipline reveal"><span>01</span><h3>Controller</h3><p>Runs the system logic and coordinates sensor inputs, display outputs, and control commands.</p></article>
+          <article class="discipline reveal"><span>02</span><h3>Power Switching</h3><p>Relay and driver hardware separate low-voltage control signals from higher-current electrical loads.</p></article>
+          <article class="discipline reveal"><span>03</span><h3>Ignition</h3><p>High-voltage ignition hardware provides the spark required during engine startup.</p></article>
+          <article class="discipline reveal"><span>04</span><h3>Sensing</h3><p>RPM sensing provides rotational-speed feedback during testing and operation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="components" class="section shell">
+      <div class="section-heading reveal"><div class="kicker">03 / COMPONENTS</div><h2>Component Breakdown</h2><p>Each block includes a dedicated write-up area so the exact component choice, purpose, wiring, and design reasoning can be documented separately.</p></div>
+      <div class="component-grid">
+        <article class="component-card reveal"><div class="component-number">01</div><h3>Microcontroller</h3><p class="component-subtitle">Main system controller</p><div class="component-writeup"><strong>Write-up</strong><p>Add the controller model, why it was selected, what signals it reads, what outputs it controls, and any important firmware details.</p></div></article>
+        <article class="component-card reveal"><div class="component-number">02</div><h3>4-Channel Relay Module</h3><p class="component-subtitle">Load switching and isolation</p><div class="component-writeup"><strong>Write-up</strong><p>Describe which loads are switched by the relays, why relays were used, and how the relay board interfaces with the controller.</p></div></article>
+        <article class="component-card reveal component-with-photo"><figure class="component-photo"><img src="assets/jet-control-box.jpg" alt="Control enclosure showing relay and motor driver hardware" loading="lazy" /></figure><div class="component-body"><div class="component-number">03</div><h3>High-Current Motor Driver</h3><p class="component-subtitle">Power control for a motorized load</p><div class="component-writeup"><strong>Write-up</strong><p>Add the driver model, controlled load, supply voltage/current requirements, control signal method, and why this driver was chosen.</p></div></div></article>
+        <article class="component-card reveal component-with-photo"><figure class="component-photo"><img src="assets/jet-ignition-assembly.jpg" alt="Jet engine ignition transformer, spark plug, and driver electronics" loading="lazy" /></figure><div class="component-body"><div class="component-number">04</div><h3>Ignition System</h3><p class="component-subtitle">Ignition transformer, driver, and spark plug</p><div class="component-writeup"><strong>Write-up</strong><p>Explain how the ignition circuit is powered and switched, the purpose of the transformer and driver board, and how the spark plug interfaces with the combustor.</p></div></div></article>
+        <article class="component-card reveal component-with-photo"><figure class="component-photo"><img src="assets/jet-rpm-sensor.jpg" alt="Photoelectric RPM sensor module used in the jet engine project" loading="lazy" /></figure><div class="component-body"><div class="component-number">05</div><h3>RPM Sensor</h3><p class="component-subtitle">Rotational-speed feedback</p><div class="component-writeup"><strong>Write-up</strong><p>Add the sensor type, mounting location, signal conditioning, how RPM is calculated, and how the reading is used during engine testing.</p></div></div></article>
+        <article class="component-card reveal"><div class="component-number">06</div><h3>LCD / User Interface</h3><p class="component-subtitle">Operator status and live data</p><div class="component-writeup"><strong>Write-up</strong><p>Describe what information is displayed, how the display connects to the controller, and what controls or status indicators are available to the operator.</p></div></article>
+        <article class="component-card reveal"><div class="component-number">07</div><h3>Power &amp; Safety Controls</h3><p class="component-subtitle">Power distribution and shutdown path</p><div class="component-writeup"><strong>Write-up</strong><p>Add the power supplies, protection, emergency-stop behavior, connector choices, grounding strategy, and any safety interlocks.</p></div></article>
+      </div>
+    </section>
+
+    <section id="integration" class="section section-alt">
+      <div class="shell">
+        <div class="section-heading reveal"><div class="kicker">04 / INTEGRATION</div><h2>Packaging &amp; Integration</h2><p>The electronics were packaged into a custom enclosure while ignition hardware and engine-side components remained external for access during testing.</p></div>
+        <div class="jet-integration-gallery">
+          <figure class="photo-card reveal jet-contained-photo"><img src="assets/jet-control-box-early.jpg" alt="Earlier jet engine control enclosure wiring layout" loading="lazy" /><figcaption>Earlier enclosure wiring state during integration.</figcaption></figure>
+          <figure class="photo-card reveal jet-contained-photo"><img src="assets/jet-ignition-transformer.jpg" alt="Close-up of jet engine ignition transformer" loading="lazy" /><figcaption>Ignition transformer hardware used in the startup system.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><div><strong>Jet Engine Electrical &amp; Control System</strong><span>Controls · Power Electronics · Ignition · Sensing</span></div><a href="index.html">Home ↑</a></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

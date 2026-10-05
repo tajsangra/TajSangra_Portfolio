@@ -77,3 +77,29 @@ footer{border-top:1px solid var(--line);padding:34px 0 52px;background:#070a0e}.
 .photo-pair .photo-card{display:flex;flex-direction:column}.photo-pair .photo-card img{width:100%;height:275px;aspect-ratio:auto;object-fit:contain;background:#0b0f14;padding:10px}.photo-pair .photo-card figcaption{margin-top:auto}
 
 @media(max-width:620px){.photo-pair .photo-card img{height:auto;padding:0}}
+
+
+/* Jet engine electrical project */
+.project-card-secondary{margin-top:26px}
+.jet-hero-grid{grid-template-columns:.82fr 1.18fr}
+.jet-hero-media img{aspect-ratio:16/10;object-fit:contain;background:#111820}
+.jet-overview-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;align-items:stretch}
+.jet-contained-photo img{width:100%;height:100%;max-height:700px;object-fit:contain;background:#0b1016}
+.jet-summary-card{display:flex;flex-direction:column;justify-content:center}
+.jet-system-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.component-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.component-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px;overflow:hidden}
+.component-number{color:var(--accent);font:700 11px/1 ui-monospace,monospace}
+.component-card h3{font-size:24px;line-height:1.15;letter-spacing:-.02em;margin:14px 0 4px}
+.component-subtitle{color:var(--faint);font-size:13px;margin:0 0 20px;text-transform:uppercase;letter-spacing:.08em}
+.component-writeup{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+.component-writeup strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#dce6ee;margin-bottom:8px}
+.component-writeup p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+.component-with-photo{padding:0}
+.component-photo{margin:0;background:#0b1016;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:280px}
+.component-photo img{width:100%;height:360px;object-fit:contain}
+.component-body{padding:26px}
+.jet-integration-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.jet-integration-gallery .photo-card{display:flex;flex-direction:column}
+.jet-integration-gallery .photo-card img{height:560px;object-fit:contain;background:#0b1016}
+@media(max-width:900px){.jet-hero-grid,.jet-overview-grid,.jet-system-strip,.component-grid,.jet-integration-gallery{grid-template-columns:1fr}.component-photo img,.jet-integration-gallery .photo-card img{height:auto;max-height:620px}}
