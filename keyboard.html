@@ -57,10 +57,24 @@
       </div>
     </section>
 
+    <section id="demo" class="section shell">
+      <div class="section-heading reveal">
+        <div class="kicker">05 / FINAL PROTOTYPE</div>
+        <h2>Demo</h2>
+      </div>
+
+      <div class="video-frame reveal">
+        <video controls preload="metadata" playsinline>
+          <source src="assets/keyboard-demo-v2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
     <section id="overview" class="section shell">
       <div class="section-heading reveal">
         <div class="kicker">01 / OVERVIEW</div>
-        <h2>One project, four engineering disciplines.</h2>
+        <h2>Project Overview</h2>
         <p>The goal was not to assemble a keyboard kit. It was to design the system around a custom layout, build the electronics and enclosure, write the firmware, and bring the physical board to a working state.</p>
       </div>
 
@@ -81,7 +95,7 @@
       <div class="shell">
         <div class="section-heading reveal">
           <div class="kicker">02 / HARDWARE & PCB</div>
-          <h2>Designed around the real layout, not a generic dev board.</h2>
+          <h2>Hardware & PCB Design</h2>
           <p>The uploaded KiCad PCB contains 84 mechanical switch footprints, 92 reverse-mount SK6812MINI-E LEDs, a Raspberry Pi Pico footprint, OLED and rotary-encoder provisions, a 74AHCT125 level shifter, and six M2 mounting holes.</p>
         </div>
 
@@ -133,7 +147,7 @@
     <section id="firmware" class="section shell">
       <div class="section-heading reveal">
         <div class="kicker">03 / FIRMWARE</div>
-        <h2>The PCB becomes a keyboard in software.</h2>
+        <h2>Firmware</h2>
         <p>QMK scans the 9 × 10 switch matrix, maps physical positions to keycodes and layers, exposes the device over USB, and drives the RGB chain.</p>
       </div>
 
@@ -171,7 +185,7 @@
       <div class="shell">
         <div class="section-heading reveal">
           <div class="kicker">04 / BUILD & ITERATION</div>
-          <h2>Designed, fabricated, assembled, debugged.</h2>
+          <h2>Build & Debugging</h2>
           <p>The finished prototype is the result of a complete hardware loop: CAD → PCB → assembly → firmware → electrical debugging → mechanical integration.</p>
         </div>
 
@@ -189,7 +203,7 @@
         <div class="story-grid">
           <article class="story reveal debugging-story">
             <div class="card-label">Debugging</div>
-            <h3>The prototype only worked after several rounds of electrical and mechanical debugging.</h3>
+            <h3>Debugging and Rework</h3>
             <p>The first problems appeared before fabrication. KiCad reported schematic issues because many global labels were visually placed on wires but were not actually snapped to the wire endpoints. Those labels had to be moved and the schematic rechecked before the design was considered clean.</p>
             <p>The largest design failure came after the first PCB was ordered: every Kailh hot-swap socket had been flipped to the wrong side. The footprint already accounted for backside mounting, so flipping the footprint again put the sockets on the wrong side and made the first PCB unusable. I corrected all socket orientations, rerouted the board, and ordered a second revision.</p>
             <p>Assembly created another failure mode. One row of RGB LEDs was soldered backwards, and while reorienting them I tore four copper pads from the PCB. The damaged LED connections were recovered with hand-soldered jumper wires, which are visible on the back of the finished board.</p>
@@ -204,23 +218,11 @@
       </div>
     </section>
 
-    <section id="demo" class="section shell">
-      <div class="section-heading reveal">
-        <div class="kicker">05 / FINAL PROTOTYPE</div>
-        <h2>Working hardware.</h2>
-      </div>
-
-      <div class="video-frame reveal">
-        <video controls preload="metadata" playsinline>
-          <source src="assets/keyboard-demo-v2.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
+    <section id="future" class="section shell">
       <div class="faults-section reveal">
         <div class="faults-heading">
           <span>NEXT REVISION</span>
-          <h2>What I would improve in a future version.</h2>
+          <h2>Future Improvements</h2>
           <p>The first prototype exposed several places where the design and build process could be made more robust. A second revision would focus on preventing avoidable rework before fabrication and making hardware bring-up easier.</p>
         </div>
         <div class="fault-grid">
