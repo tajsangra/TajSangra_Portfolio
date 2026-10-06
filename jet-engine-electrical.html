@@ -36,7 +36,7 @@
     </section>
 
     <section id="overview" class="section shell">
-      <div class="section-heading reveal"><div class="kicker">01 / OVERVIEW</div><h2>Project Overview</h2></div>
+      <div class="section-heading reveal"><h2>Project Overview</h2></div>
       <div class="jet-overview-grid">
         <figure class="photo-card reveal jet-contained-photo"><img src="assets/jet-control-box.jpg" alt="Inside the jet engine electrical control enclosure" loading="lazy" /><figcaption><strong>Control enclosure</strong><br>Controller, relay board, motor driver, display hardware, and wiring integrated into the printed enclosure.</figcaption></figure>
         <div class="jet-overview-copy">
@@ -48,10 +48,9 @@
 
     <section id="system" class="section section-alt">
       <div class="shell">
-        <div class="section-heading reveal"><div class="kicker">02 / SYSTEM</div><h2>Electrical System</h2><p>Each major subsystem is documented separately so the controller, switching, motor drive, ignition, sensing, display, and power hardware can be explained clearly.</p></div>
+        <div class="section-heading reveal"><h2>Electrical System</h2></div>
         <div class="component-grid">
           <article class="component-card reveal">
-            <div class="component-number">01</div>
             <h3>Arduino Mega</h3>
             <p class="component-subtitle">Main system controller</p>
             <div class="component-writeup">
@@ -60,7 +59,6 @@
           </article>
 
           <article class="component-card reveal">
-            <div class="component-number">02</div>
             <h3>Solenoid</h3>
             <p class="component-subtitle">Fuel-flow shutoff control</p>
             <div class="component-writeup">
@@ -68,19 +66,20 @@
             </div>
           </article>
 
-          <article class="component-card reveal compact-card">
-            <div class="component-number">03</div>
-            <h3>RPM Sensor</h3>
-            <p class="component-subtitle">Reflective rotational-speed sensing</p>
-            <div class="component-writeup">
-              <p>A reflective IR sensor reads a half-silver, half-black rotating target, producing one pulse per revolution for RPM calculation. I validated the method on a Tormach Tech Pro router bit at just under 10,000 RPM.</p>
+          <article class="component-card reveal component-with-photo">
+            <figure class="component-photo"><img src="assets/jet-rpm-sensor.jpg" alt="Reflective infrared RPM sensor used for rotational-speed testing" loading="lazy" /></figure>
+            <div class="component-body">
+              <h3>RPM Sensor</h3>
+              <p class="component-subtitle">Reflective rotational-speed sensing</p>
+              <div class="component-writeup">
+                <p>A reflective IR sensor reads a half-silver, half-black rotating target, producing one pulse per revolution for RPM calculation. I validated the method on a Tormach Tech Pro router bit at just under 10,000 RPM.</p>
+              </div>
             </div>
           </article>
 
           <article class="component-card reveal component-with-photo">
             <figure class="component-photo"><img src="assets/jet-ignition-assembly.jpg" alt="Jet engine ignition transformer, spark plug, and ZVS driver electronics" loading="lazy" /></figure>
             <div class="component-body">
-              <div class="component-number">04</div>
               <h3>Spark Plug &amp; Ignition</h3>
               <p class="component-subtitle">High-voltage ignition system</p>
               <div class="component-writeup">
@@ -90,7 +89,6 @@
           </article>
 
           <article class="component-card reveal compact-card">
-            <div class="component-number">05</div>
             <h3>Fuel Pump</h3>
             <p class="component-subtitle">Variable-speed fuel delivery</p>
             <div class="component-writeup">
@@ -99,7 +97,6 @@
           </article>
 
           <article class="component-card reveal compact-card">
-            <div class="component-number">06</div>
             <h3>LCD Display</h3>
             <p class="component-subtitle">Live operating information</p>
             <div class="component-writeup">
@@ -113,7 +110,6 @@
     <section id="testing" class="section shell">
       <div class="section-heading reveal">
         <h2>Bench Testing</h2>
-        <p>Individual subsystems were tested separately before full integration so ignition and fluid-system behavior could be checked independently.</p>
       </div>
       <div class="jet-test-grid">
         <figure class="photo-card reveal jet-video-card">
@@ -121,31 +117,34 @@
             <source src="assets/jet-ignition-test-muted.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <figcaption><strong>Ignition test</strong><br>Bench test of the ignition hardware and spark plug before installation on the engine.</figcaption>
         </figure>
         <figure class="photo-card reveal jet-video-card">
           <video controls muted playsinline preload="metadata">
             <source src="assets/jet-fluid-test-muted.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <figcaption><strong>Fluid-system test</strong><br>Bench testing of the pump and fluid-delivery setup before integration with the engine.</figcaption>
         </figure>
       </div>
     </section>
 
     <section id="integration" class="section section-alt">
       <div class="shell">
-        <div class="section-heading reveal"><div class="kicker">04 / FUTURE IMPROVEMENTS</div><h2>Future Improvements</h2><p>Areas to refine in the next revision of the electrical and control system.</p></div>
-        <div class="component-grid">
-          <article class="component-card reveal"><h3>Cleaner wiring and connectors</h3><p>Replace temporary bench wiring with a more structured harness and dedicated connectors so the system is easier to assemble, troubleshoot, and service.</p></article>
-          <article class="component-card reveal"><h3>More integrated packaging</h3><p>Bring more of the external electrical hardware into a cleaner enclosure layout while keeping ignition and engine-side connections accessible during testing.</p></article>
-          <article class="component-card reveal"><h3>Expanded monitoring and safety</h3><p>Add more operating feedback and protection as the engine moves from subsystem testing toward full integrated runs.</p></article>
+        <div class="section-heading reveal"><h2>Future Improvements</h2></div>
+        <div class="component-grid future-improvements-grid">
+          <article class="component-card reveal">
+            <h3>Add Temperature Sensing</h3>
+            <p>Add temperature sensing at a critical hot section of the engine so thermal conditions can be monitored during testing and displayed alongside RPM and pump information.</p>
+          </article>
+          <article class="component-card reveal">
+            <h3>Add Safety Systems &amp; Failsafes</h3>
+            <p>Add a physical emergency stop and software failsafes that can shut down the pump and ignition if unsafe conditions occur, such as an invalid sensor reading, excessive temperature, or loss of expected RPM feedback.</p>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><div class="shell footer-inner"><div><strong>Jet Engine Electrical &amp; Control System</strong><span>Controls · Power Electronics · Ignition · Sensing</span></div><a href="index.html">Home ↑</a></div></footer>
+  <footer><div class="shell footer-inner"><a href="index.html">Home ↑</a></div></footer>
   <script src="script.js"></script>
 </body>
 </html>
