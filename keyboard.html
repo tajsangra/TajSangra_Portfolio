@@ -113,7 +113,7 @@
       <div class="shell">
         <div class="section-heading reveal">
         <h2>Hardware & PCB Design</h2>
-          <p>The uploaded KiCad PCB contains 84 mechanical switch footprints, 92 reverse-mount SK6812MINI-E LEDs, a Raspberry Pi Pico footprint, OLED and rotary-encoder provisions, a 74AHCT125 level shifter, and six M2 mounting holes.</p>
+          <p>The uploaded KiCad PCB contains 84 mechanical switch footprints, per-switch diodes, 92 reverse-mount SK6812MINI-E LEDs, 0.1 µF decoupling capacitors, larger bulk capacitors for power smoothing, a Raspberry Pi Pico footprint, OLED and rotary-encoder provisions, a 74AHCT125 RGB logic-level controller, an RGB data-line resistor, and six M2 mounting holes.</p>
         </div>
 
         <div class="hardware-grid">
@@ -131,7 +131,7 @@
           <article class="technical-card reveal">
             <div class="card-label">Lighting</div>
             <h3>Per-key addressable RGB</h3>
-            <p>The PCB carries 92 SK6812MINI-E devices: 84 aligned with the switches plus additional auxiliary lighting positions.</p>
+            <p>The PCB carries 92 SK6812MINI-E devices: 84 aligned with the switches plus additional underglow positions. The RGB data signal is passed through a 74AHCT125 logic-level controller before reaching the LED chain, giving the LEDs a clean logic signal while keeping the entire chain controlled from a single GPIO pin.</p>
             <dl class="spec-list"><div><dt>LED type</dt><dd>SK6812MINI-E</dd></div><div><dt>Logic</dt><dd>74AHCT125</dd></div><div><dt>Decoupling</dt><dd>0.1 µF network</dd></div></dl>
           </article>
 
@@ -145,7 +145,7 @@
 
         <div class="kicad-gallery">
           <figure class="photo-card reveal">
-            <img src="assets/kicad-schematic-v1.png" alt="KiCad schematic showing the Raspberry Pi Pico, level shifting circuitry, and keyboard matrix connections" loading="lazy" />
+            <img src="assets/kicad-schematic-v2.png" alt="KiCad schematic showing the Raspberry Pi Pico, level shifting circuitry, and keyboard matrix connections" loading="lazy" />
             <figcaption><strong>KiCad schematic</strong><br>The completed electrical design combines the RP2040 controller, matrix rows and columns, RGB signal conditioning, and supporting circuitry.</figcaption>
           </figure>
           <figure class="photo-card reveal">
@@ -207,8 +207,7 @@
       <div class="shell">
         <div class="section-heading reveal">
         <h2>Debugging</h2>
-          <p>The finished prototype is the result of a complete hardware loop: CAD → PCB → assembly → firmware → electrical debugging → mechanical integration.</p>
-        </div>
+                  </div>
 
         <div class="story-grid">
           <article class="story reveal debugging-story">
@@ -217,7 +216,7 @@
             <p>The first problems appeared before fabrication. KiCad reported schematic issues because many global labels were visually placed on wires but were not actually snapped to the wire endpoints. Those labels had to be moved and the schematic rechecked before the design was considered clean.</p>
             <p>The largest design failure came after the first PCB was ordered: every Kailh hot-swap socket had been flipped to the wrong side. The footprint already accounted for backside mounting, so flipping the footprint again put the sockets on the wrong side and made the first PCB unusable. I corrected all socket orientations, rerouted the board, and ordered a second revision.</p>
             <p>Assembly created another failure mode. One row of RGB LEDs was soldered backwards, and while reorienting them I tore four copper pads from the PCB. The damaged LED connections were recovered with hand-soldered jumper wires, which are visible on the back of the finished board.</p>
-            <p>Mechanical debugging happened in parallel. The OLED orientation and plate clearance required extra work: the display PCB needed a larger opening through the plate, and the mounting geometry required spacers, washers, and smaller M1.2 hardware. The top-case CAD also repeatedly reverted to an older smaller state until a SolidWorks update resolved the issue.</p>
+            <p>The OLED and plate also required mechanical rework. The OLED PCB could not fit through the original plate opening, so I enlarged the cutout with a Dremel. I then mounted the display using spacers to hold it at the correct height, washers to support the screw heads over the larger OLED mounting holes, and M1.2 screws to secure the assembly.</p>
           </article>
         </div>
 
