@@ -237,20 +237,22 @@
           <article class="fault-card">
             <b>01</b>
             <h3>Increase RGB brightness</h3>
-            <p>The lighting works, but I would like the LEDs to appear brighter and more consistent across the keyboard.</p>
-            <p><strong>Next time:</strong> improve the 5 V power distribution to the RGB chain with lower-resistance power paths and additional power-injection points so voltage drop is reduced while keeping the LEDs within their current limits.</p>
+            <p>The main improvement would be powering the RGB LEDs from the dedicated 5 V power rail instead of sourcing their power from a GPIO pin, which would provide more available current and allow the lighting to reach a higher, more consistent brightness. I would also use lower-resistance power paths and additional 5 V/GND power-injection points across the RGB chain to reduce voltage drop while keeping the RGB data signal controlled through the logic-level circuitry.</p>
           </article>
           <article class="fault-card">
             <b>02</b>
             <h3>Use a higher-quality case material</h3>
-            <p>The 3D-printed enclosure works for the prototype, but a stronger material would make the keyboard feel more rigid and finished.</p>
-            <p><strong>Next time:</strong> manufacture the enclosure from aluminum or another more durable material to improve stiffness, weight, surface finish, and long-term durability.</p>
+            <p>The 3D-printed enclosure works for the prototype, but manufacturing the case from aluminum or another more durable material would improve stiffness, weight, surface finish, and long-term durability while giving the final keyboard a more finished feel.</p>
           </article>
           <article class="fault-card">
             <b>03</b>
             <h3>Increase the switch-opening tolerance</h3>
-            <p>The switch insert holes in the plate are tighter than necessary, which makes installing and removing switches more difficult.</p>
-            <p><strong>Next time:</strong> make the switch cutouts slightly larger so the switches can be installed more easily while still maintaining enough retention to hold them securely in the plate.</p>
+            <p>The switch insert holes in the plate are tighter than necessary, which makes installing and removing switches more difficult, so I would make the cutouts slightly larger while still maintaining enough retention to hold each switch securely in the plate.</p>
+          </article>
+          <article class="fault-card">
+            <b>04</b>
+            <h3>Correct the OLED plate cutout</h3>
+            <p>The OLED opening in the plate was undersized, so I had to enlarge it manually with a Dremel during assembly. In a future revision I would dimension the cutout around the full OLED PCB and its mounting geometry before fabrication so the display fits correctly without any post-processing.</p>
           </article>
         </div>
       </div>
