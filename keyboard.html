@@ -59,7 +59,6 @@
 
     <section id="demo" class="section shell">
       <div class="section-heading reveal">
-        <div class="kicker">01 / FINAL PROTOTYPE</div>
         <h2>Demo</h2>
       </div>
 
@@ -73,7 +72,6 @@
 
     <section id="overview" class="section shell">
       <div class="section-heading reveal">
-        <div class="kicker">02 / OVERVIEW</div>
         <h2>Project Overview</h2>
       </div>
 
@@ -90,15 +88,13 @@
     <section id="hardware" class="section section-alt">
       <div class="shell">
         <div class="section-heading reveal">
-          <div class="kicker">03 / HARDWARE & PCB</div>
-          <h2>Hardware & PCB Design</h2>
+        <h2>Hardware & PCB Design</h2>
           <p>The uploaded KiCad PCB contains 84 mechanical switch footprints, 92 reverse-mount SK6812MINI-E LEDs, a Raspberry Pi Pico footprint, OLED and rotary-encoder provisions, a 74AHCT125 level shifter, and six M2 mounting holes.</p>
         </div>
 
         <div class="hardware-grid">
           <figure class="technical-card span-2 reveal">
-            <img src="assets/pcb-layout.svg" alt="Component map generated from the uploaded KiCad board coordinates" loading="lazy" />
-            <figcaption><strong>PCB component map</strong><br>Generated directly from <code>Keyboard(10).kicad_pcb</code>. Red points show the RGB devices and white outlines show the 84 switch locations.</figcaption>
+            <img src="assets/pcb-render-v1.png" alt="KiCad 3D render of the custom mechanical keyboard PCB" loading="lazy" />
           </figure>
 
           <article class="technical-card reveal">
@@ -113,6 +109,13 @@
             <h3>Per-key addressable RGB</h3>
             <p>The PCB carries 92 SK6812MINI-E devices: 84 aligned with the switches plus additional auxiliary lighting positions.</p>
             <dl class="spec-list"><div><dt>LED type</dt><dd>SK6812MINI-E</dd></div><div><dt>Logic</dt><dd>74AHCT125</dd></div><div><dt>Decoupling</dt><dd>0.1 µF network</dd></div></dl>
+          </article>
+
+          <article class="technical-card reveal">
+            <div class="card-label">Display</div>
+            <h3>Colour OLED</h3>
+            <p>The OLED was included as a dedicated display for keyboard information and status, with its electrical interface and mounting incorporated into the PCB and enclosure design.</p>
+            <dl class="spec-list"><div><dt>Interface</dt><dd>SPI</dd></div><div><dt>Connection</dt><dd>PCB header</dd></div><div><dt>Mounting</dt><dd>Custom CAD bosses</dd></div></dl>
           </article>
         </div>
 
@@ -142,7 +145,6 @@
 
     <section id="firmware" class="section shell">
       <div class="section-heading reveal">
-        <div class="kicker">04 / FIRMWARE</div>
         <h2>Firmware</h2>
         <p>QMK scans the 9 × 10 switch matrix, maps physical positions to keycodes and layers, exposes the device over USB, and drives the RGB chain.</p>
       </div>
@@ -180,20 +182,8 @@
     <section id="build" class="section section-alt">
       <div class="shell">
         <div class="section-heading reveal">
-          <div class="kicker">05 / BUILD & ITERATION</div>
-          <h2>Build & Debugging</h2>
+        <h2>Debugging</h2>
           <p>The finished prototype is the result of a complete hardware loop: CAD → PCB → assembly → firmware → electrical debugging → mechanical integration.</p>
-        </div>
-
-        <div class="timeline reveal">
-          <div><b>01</b><span>Define custom layout and controls</span></div>
-          <div><b>02</b><span>Capture schematic + place footprints</span></div>
-          <div><b>03</b><span>Route PCB and prepare fabrication</span></div>
-          <div><b>04</b><span>Model enclosure in SolidWorks</span></div>
-          <div><b>05</b><span>Assemble switches, LEDs and controller</span></div>
-          <div><b>06</b><span>Bring up QMK and test matrix</span></div>
-          <div><b>07</b><span>Trace faults and add board rework</span></div>
-          <div><b>08</b><span>Integrate case, keycaps and final firmware</span></div>
         </div>
 
         <div class="story-grid">
