@@ -36,7 +36,7 @@
       <div class="jet-overview-grid">
         <figure class="photo-card reveal jet-contained-photo"><img src="assets/jet-control-box.jpg" alt="Inside the jet engine electrical control enclosure" loading="lazy" /><figcaption><strong>Control enclosure</strong><br>Controller, relay board, motor driver, display hardware, and wiring integrated into the printed enclosure.</figcaption></figure>
         <div class="jet-overview-copy">
-          <article class="story reveal jet-summary-card"><div class="card-label">Why a jet engine?</div><h3>Supporting a fully custom engine build.</h3><p>A group of my peers took on the challenge of designing and building a jet engine entirely from scratch. Their experience was focused more on the mechanical side than electronics, so they asked me to design and build the electrical and control system for the engine.</p></article>
+          <article class="story reveal jet-summary-card"><div class="card-label">Why a jet engine?</div><h3>Supporting a fully custom engine build.</h3><p>A group of my peers took on the challenge of designing and building a low-cost jet engine entirely from scratch. Their experience was focused more on the mechanical side than electronics, so they asked me to design and build the electrical and control system for the engine.</p></article>
           <article class="story reveal jet-summary-card"><div class="card-label">System goals</div><h3>Control the key systems needed for the first engine tests.</h3><p>The first iteration needed variable-speed control of the fuel pump, spark-plug ignition, RPM sensing, and an LCD for live operating information. I designed the electronics so these functions could be controlled from one enclosure and expanded as testing progressed.</p></article>
         </div>
       </div>
@@ -46,13 +46,68 @@
       <div class="shell">
         <div class="section-heading reveal"><div class="kicker">02 / SYSTEM</div><h2>Electrical System</h2><p>Each major subsystem is documented separately so the controller, switching, motor drive, ignition, sensing, display, and power hardware can be explained clearly.</p></div>
         <div class="component-grid">
-          <article class="component-card reveal"><div class="component-number">01</div><h3>Microcontroller</h3><p class="component-subtitle">Main system controller</p><div class="component-writeup"><strong>Write-up</strong><p>Add the controller model, why it was selected, what signals it reads, what outputs it controls, and any important firmware details.</p></div></article>
-          <article class="component-card reveal"><div class="component-number">02</div><h3>4-Channel Relay Module</h3><p class="component-subtitle">Load switching and isolation</p><div class="component-writeup"><strong>Write-up</strong><p>Describe which loads are switched by the relays, why relays were used, and how the relay board interfaces with the controller.</p></div></article>
-          <article class="component-card reveal component-with-photo"><figure class="component-photo"><img src="assets/jet-control-box.jpg" alt="Control enclosure showing relay and motor driver hardware" loading="lazy" /></figure><div class="component-body"><div class="component-number">03</div><h3>High-Current Motor Driver</h3><p class="component-subtitle">Power control for a motorized load</p><div class="component-writeup"><strong>Write-up</strong><p>Add the driver model, controlled load, supply voltage/current requirements, control signal method, and why this driver was chosen.</p></div></div></article>
-          <article class="component-card reveal component-with-photo"><figure class="component-photo"><img src="assets/jet-ignition-assembly.jpg" alt="Jet engine ignition transformer, spark plug, and driver electronics" loading="lazy" /></figure><div class="component-body"><div class="component-number">04</div><h3>Ignition System</h3><p class="component-subtitle">Ignition transformer, driver, and spark plug</p><div class="component-writeup"><strong>Write-up</strong><p>Explain how the ignition circuit is powered and switched, the purpose of the transformer and driver board, and how the spark plug interfaces with the combustor.</p></div></div></article>
-          <article class="component-card reveal component-with-photo"><figure class="component-photo"><img src="assets/jet-rpm-sensor.jpg" alt="Photoelectric RPM sensor module used in the jet engine project" loading="lazy" /></figure><div class="component-body"><div class="component-number">05</div><h3>RPM Sensor</h3><p class="component-subtitle">Rotational-speed feedback</p><div class="component-writeup"><strong>Write-up</strong><p>Add the sensor type, mounting location, signal conditioning, how RPM is calculated, and how the reading is used during engine testing.</p></div></div></article>
-          <article class="component-card reveal"><div class="component-number">06</div><h3>LCD / User Interface</h3><p class="component-subtitle">Operator status and live data</p><div class="component-writeup"><strong>Write-up</strong><p>Describe what information is displayed, how the display connects to the controller, and what controls or status indicators are available to the operator.</p></div></article>
-          <article class="component-card reveal"><div class="component-number">07</div><h3>Power &amp; Safety Controls</h3><p class="component-subtitle">Power distribution and shutdown path</p><div class="component-writeup"><strong>Write-up</strong><p>Add the power supplies, protection, emergency-stop behavior, connector choices, grounding strategy, and any safety interlocks.</p></div></article>
+          <article class="component-card reveal">
+            <div class="component-number">01</div>
+            <h3>Arduino Mega</h3>
+            <p class="component-subtitle">Main system controller</p>
+            <div class="component-writeup">
+              <p>The Arduino Mega was chosen for its large number of available I/O pins, which gives the system enough headroom to control several subsystems from a single controller while still leaving room for expansion. It also provides a low-cost and well-supported platform for developing and testing the first version of the control system.</p>
+            </div>
+          </article>
+
+          <article class="component-card reveal">
+            <div class="component-number">02</div>
+            <h3>Solenoid</h3>
+            <p class="component-subtitle">Fuel-flow shutoff control</p>
+            <div class="component-writeup">
+              <p>The fuel solenoid is normally closed, so fuel flow is blocked when it is not energized. Because the Arduino cannot supply the voltage or current required by the solenoid directly, a 4-channel relay module lets the Arduino use a low-power control signal to switch the solenoid's separate power-supply circuit on and off.</p>
+            </div>
+          </article>
+
+          <article class="component-card reveal component-with-photo">
+            <figure class="component-photo"><img src="assets/jet-control-box.jpg" alt="Control enclosure showing relay and motor driver hardware" loading="lazy" /></figure>
+            <div class="component-body">
+              <div class="component-number">03</div>
+              <h3>Fuel Pump</h3>
+              <p class="component-subtitle">Variable-speed fuel delivery</p>
+              <div class="component-writeup">
+                <p>The fuel pump is powered from a separate power supply through a motor driver. The Arduino sends the driver a low-power control signal, allowing it to vary the pump speed without having to source the pump's current itself. This separates the high-current motor load from the microcontroller while still giving the software direct control over fuel-pump output.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="component-card reveal component-with-photo">
+            <figure class="component-photo"><img src="assets/jet-ignition-assembly.jpg" alt="Jet engine ignition transformer, spark plug, and ZVS driver electronics" loading="lazy" /></figure>
+            <div class="component-body">
+              <div class="component-number">04</div>
+              <h3>Spark Plug &amp; Ignition</h3>
+              <p class="component-subtitle">High-voltage ignition system</p>
+              <div class="component-writeup">
+                <p>The spark plug is driven by a ZVS high-frequency driver and a step-up transformer. The ZVS circuit takes DC power from the supply and rapidly switches current through the transformer primary, producing a high-frequency alternating waveform. The transformer then steps this voltage up to the high level needed to create a spark across the spark-plug gap.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="component-card reveal component-with-photo">
+            <figure class="component-photo"><img src="assets/jet-rpm-sensor.jpg" alt="Reflective infrared RPM sensor module used in the jet engine project" loading="lazy" /></figure>
+            <div class="component-body">
+              <div class="component-number">05</div>
+              <h3>RPM Sensor</h3>
+              <p class="component-subtitle">Reflective rotational-speed sensing</p>
+              <div class="component-writeup">
+                <p>The planned RPM measurement uses a reflective infrared sensor aimed at a rotating bolt with one half left reflective silver and the other half painted black. The change in reflected light produces one repeatable reflectance cycle per revolution, which the Arduino can count to calculate RPM. I tested the sensing approach by colouring half of a Tormach Tech Pro router bit black and running it at just under 10,000 RPM.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="component-card reveal">
+            <div class="component-number">06</div>
+            <h3>LCD Display</h3>
+            <p class="component-subtitle">Live operating information</p>
+            <div class="component-writeup">
+              <p>The LCD currently displays the commanded pump speed, whether the pump is enabled or off, and the live RPM reading from the sensor. This keeps the key operating information visible from the control enclosure during bench testing.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
