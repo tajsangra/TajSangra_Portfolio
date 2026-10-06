@@ -55,7 +55,7 @@
             <h3>Arduino Mega</h3>
             <p class="component-subtitle">Main system controller</p>
             <div class="component-writeup">
-              <p>Chosen for its large I/O count, the Arduino Mega can control the pump, solenoid, ignition, RPM sensor, and display from one low-cost, well-supported board while still leaving room for expansion.</p>
+              <p>The Arduino Mega was chosen for its large I/O count, allowing the pump, solenoid, ignition, RPM sensor, and display to be controlled from one low-cost board with room for expansion.</p>
             </div>
           </article>
 
@@ -64,7 +64,7 @@
             <h3>Solenoid</h3>
             <p class="component-subtitle">Fuel-flow shutoff control</p>
             <div class="component-writeup">
-              <p>The normally closed fuel solenoid blocks flow when unpowered. A 4-channel relay lets the Arduino switch its separate higher-power supply circuit using only a low-power control signal.</p>
+              <p>The normally closed solenoid blocks fuel flow when unpowered. A 4-channel relay lets the Arduino switch the solenoid’s higher-power supply using a low-power control signal.</p>
             </div>
           </article>
 
@@ -73,7 +73,7 @@
             <h3>RPM Sensor</h3>
             <p class="component-subtitle">Reflective rotational-speed sensing</p>
             <div class="component-writeup">
-              <p>A reflective IR sensor reads a half-silver, half-black rotating target, producing one optical cycle per revolution for RPM calculation. I validated the method on a Tormach Tech Pro router bit at just under 10,000 RPM.</p>
+              <p>A reflective IR sensor reads a half-silver, half-black rotating target, producing one pulse per revolution for RPM calculation. I validated the method on a Tormach Tech Pro router bit at just under 10,000 RPM.</p>
             </div>
           </article>
 
@@ -84,20 +84,17 @@
               <h3>Spark Plug &amp; Ignition</h3>
               <p class="component-subtitle">High-voltage ignition system</p>
               <div class="component-writeup">
-                <p>A ZVS driver converts DC supply power into high-frequency switching for a step-up transformer, which raises the voltage enough to produce a spark across the spark-plug gap.</p>
+                <p>A ZVS driver switches DC power at high frequency into a step-up transformer, producing the high voltage needed to create a spark across the plug gap.</p>
               </div>
             </div>
           </article>
 
-          <article class="component-card reveal component-with-photo">
-            <figure class="component-photo"><img src="assets/jet-control-box.jpg" alt="Control enclosure showing relay and motor driver hardware" loading="lazy" /></figure>
-            <div class="component-body">
-              <div class="component-number">05</div>
-              <h3>Fuel Pump</h3>
-              <p class="component-subtitle">Variable-speed fuel delivery</p>
-              <div class="component-writeup">
-                <p>The pump runs from a separate power supply through a motor driver. The Arduino sends a low-power control signal to vary pump speed without carrying the motor's high current itself.</p>
-              </div>
+          <article class="component-card reveal compact-card">
+            <div class="component-number">05</div>
+            <h3>Fuel Pump</h3>
+            <p class="component-subtitle">Variable-speed fuel delivery</p>
+            <div class="component-writeup">
+              <p>The pump is powered from a separate supply through a motor driver. The Arduino sends a low-power control signal to vary pump speed without carrying the pump current itself.</p>
             </div>
           </article>
 
@@ -106,7 +103,7 @@
             <h3>LCD Display</h3>
             <p class="component-subtitle">Live operating information</p>
             <div class="component-writeup">
-              <p>The LCD shows commanded pump speed, pump on/off status, and live RPM, keeping the main operating values visible during testing.</p>
+              <p>The LCD shows pump speed, pump on/off status, and live RPM so the main operating values stay visible during testing.</p>
             </div>
           </article>
         </div>
