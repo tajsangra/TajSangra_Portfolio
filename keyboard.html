@@ -7,33 +7,8 @@
   <meta name="theme-color" content="#090d12" />
   <title>Custom Mechanical Keyboard — Engineering Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Center the five overview cards and remove their old number labels. */
-    #overview .discipline-grid {
-      width: 100%;
-      max-width: 1180px;
-      margin-left: auto;
-      margin-right: auto;
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 14px;
-    }
-    #overview .discipline {
-      min-width: 0;
-      width: 100%;
-    }
-    #overview .discipline > span { display: none; }
-    @media (max-width: 1050px) {
-      #overview .discipline-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      #overview .discipline:last-child { grid-column: 1 / -1; width: calc(50% - 7px); justify-self: center; }
-    }
-    @media (max-width: 620px) {
-      #overview .discipline-grid { grid-template-columns: 1fr; }
-      #overview .discipline:last-child { grid-column: auto; width: 100%; }
-    }
-  </style>
 </head>
-<body>
+<body class="keyboard-page">
   <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
 
   <header class="nav-wrap">
