@@ -23,7 +23,7 @@
       <div class="hero-grid jet-hero-grid">
         <div class="hero-copy reveal">
           <h1>Jet Engine<br><span>Electrical &amp; Control System</span></h1>
-          <p class="lede">A custom electrical system integrating ignition, power switching, motor control, sensing, display hardware, and safety controls for a small jet-engine project.</p>
+          <p class="lede">A custom electrical system integrating ignition, power switching, motor control, RPM sensing, and display hardware for a custom-designed jet engine.</p>
           <div class="hero-actions"><a class="button primary" href="#components">View components</a><a class="button ghost" href="#system">System overview</a></div>
           <div class="tags" aria-label="Project technologies"><span>Arduino</span><span>Power Electronics</span><span>RPM Sensing</span><span>Ignition</span><span>Relays</span><span>CAD</span></div>
         </div>
@@ -32,10 +32,13 @@
     </section>
 
     <section id="overview" class="section shell">
-      <div class="section-heading reveal"><div class="kicker">01 / OVERVIEW</div><h2>Project Overview</h2><p>The electrical subsystem brings the engine's supporting hardware under one controllable system. The enclosure houses the controller, switching hardware, motor driver, display, and supporting electronics, while external ignition and sensing hardware connects to the engine test setup.</p></div>
+      <div class="section-heading reveal"><div class="kicker">01 / OVERVIEW</div><h2>Project Overview</h2></div>
       <div class="jet-overview-grid">
         <figure class="photo-card reveal jet-contained-photo"><img src="assets/jet-control-box.jpg" alt="Inside the jet engine electrical control enclosure" loading="lazy" /><figcaption><strong>Control enclosure</strong><br>Controller, relay board, motor driver, display hardware, and wiring integrated into the printed enclosure.</figcaption></figure>
-        <article class="story reveal jet-summary-card"><div class="card-label">System goals</div><h3>Centralized electrical control for engine testing.</h3><p>The system combines low-voltage logic with higher-current loads and ignition hardware. Keeping the electronics in a dedicated enclosure makes the bench setup easier to operate, troubleshoot, and expand.</p><p>This page is structured so each subsystem can be documented independently as testing continues.</p></article>
+        <div class="jet-overview-copy">
+          <article class="story reveal jet-summary-card"><div class="card-label">Why a jet engine?</div><h3>Supporting a fully custom engine build.</h3><p>A group of my peers took on the challenge of designing and building a jet engine entirely from scratch. Their experience was focused more on the mechanical side than electronics, so they asked me to design and build the electrical and control system for the engine.</p></article>
+          <article class="story reveal jet-summary-card"><div class="card-label">System goals</div><h3>Control the key systems needed for the first engine tests.</h3><p>The first iteration needed variable-speed control of the fuel pump, spark-plug ignition, RPM sensing, and an LCD for live operating information. I designed the electronics so these functions could be controlled from one enclosure and expanded as testing progressed.</p></article>
+        </div>
       </div>
     </section>
 
